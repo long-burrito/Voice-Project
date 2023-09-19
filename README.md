@@ -6,5 +6,14 @@ YOU MUST SPEAK RIGHT NEXT TO THE MICROPHONE, OTHERWISE THIS DOESN"T WORK
 
 Audacity is a good tool to use for recording at the exact specifications.
 
-TODO: 
-Further testing is needed for longer audio clips, and trying to see what it interprets emotions as is also important.
+1. This project will analyze a recording of a speaker and determine fluency.
+
+2. Installation requires installing myprosody. Do this through mypip and use mysp=__import__("myprosody") instead of import myprosody (if installed through mypip)
+
+3. As of right now, you can use the program to determine gender of the speaker, and a couple of other things. 
+
+4. You can test it by using the recordings in the Voice Recordings folder.
+
+5. I am using the myprosody library made by the MySolutions lab.
+
+The structure of this repository is the folder with all the myprosody information in it, and a voice recordings file in that folder. Also, a small reading test to really stress the power of the program. The current state of this project is unfinished, with a lot of work left to do.
