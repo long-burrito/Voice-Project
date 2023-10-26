@@ -328,21 +328,32 @@ def myprosody(m,p):
         df55 = pd.read_csv(outst,names=nsns)
         dataframe=dataframe.values
         array = df55.values
+        numbers = []
+        percentages = []
+        columns = []
         print("Compared to native speech, here are the prosodic features of your speech:")
         for i in range(25):
             sl0=dataframe[4:7:1,i+1]
             score = array[0,i]
             he=scipy.stats.percentileofscore(sl0, score, kind='strict')
+            columns.append(nsns[i])
             if he==0:
                 he=25
                 dfout = "%s:\t %f (%s)" %  (nsns[i],he,"% percentile ")
                 print(dfout)
+                percentages.append(he)
+                numbers.append(score)
             elif he>=25 and he<=75:
-                dfout = "%s:\t %f (%s)" % (nsns[i],he,"% percentile ")
+                dfout = "%s:\t %f (%s)" %  (nsns[i],he,"% percentile ")
                 print(dfout)
+                percentages.append(he)
+                numbers.append(score)
             else:
-                dfout = "%s:\t (%s)" % (nsns[i],":Out of Range")
+                dfout = "%s:\t %f (%s)" %  (nsns[i],he,"% percentile ")
                 print(dfout)
+                percentages.append(he)
+                numbers.append(score)
+        return percentages, numbers, columns
     except:
         print ("Try again the sound of the audio was not clear")	
     
