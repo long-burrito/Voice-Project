@@ -8,6 +8,7 @@ import threading
 import sys
 import shutil
 import os
+import matplotlib as mpl
 
 #10/29/23 - had to adjust myprosody.py to output actual numbers instead of printing out strings
 
@@ -50,45 +51,39 @@ def record_audio():
     stream.close()
 
 # Start the audio recording thread
-recording_thread = threading.Thread(target=record_audio)
-recording_thread.start()
+print("Do you want to record a new file? If yes, press y. Otherwise, any other keypress will go with what is already present.")
+if input().lower() == 'y':
+    recording_thread = threading.Thread(target=record_audio)
+    recording_thread.start()
+    try:
+        print("Press 'q' and Enter to stop recording and save audio...")
+        while True:
+            user_input = input()
+            if user_input.lower() == 'q':
+                recording = False
+                break
+        recording_thread.join()
+        audio.terminate()
 
-# Allow the user to stop recording by pressing 'q' key
-try:
-    print("Press 'q' and Enter to stop recording and save audio...")
-    while True:
-        user_input = input()
-        if user_input.lower() == 'q':
-            recording = False
-            break
-except KeyboardInterrupt:
-    pass
+        with wave.open(filename, 'wb') as wf:
+            wf.setnchannels(channels)
+            wf.setsampwidth(audio.get_sample_size(sample_format))
+            wf.setframerate(sample_rate)
+            wf.writeframes(b''.join(frames))
 
-# Wait for the recording to finish
-recording_thread.join()
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
 
-# Perform other actions or processing in the main thread
-# You can add your code here
+        output_path = os.path.join(output_folder, filename)
+        shutil.move(filename, output_path)
 
-# Close and terminate PyAudio
-audio.terminate()
-
-with wave.open(filename, 'wb') as wf:
-    wf.setnchannels(channels)
-    wf.setsampwidth(audio.get_sample_size(sample_format))
-    wf.setframerate(sample_rate)
-    wf.writeframes(b''.join(frames))
-
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
-
-output_path = os.path.join(output_folder, filename)
-shutil.move(filename, output_path)
-
-print(f"Audio file moved to: {output_path}")
+        print(f"Audio file moved to: {output_path}")
+        audio.terminate()
+    except KeyboardInterrupt:
+        pass
 
 
-p="test"
+p="passage 1"
 c=r"C:\Users\rener\Documents\GitHub\Voice-Project\myprosody"
 
 
@@ -103,9 +98,10 @@ list = [numbers]
 num = pd.DataFrame(list, columns=column)
 #num = pd.DataFrame(numbers, columns=column)
 #print(list)
-print(df.loc[1])
 mean_values = df.loc[1]
-print(num)
+mean_values = pd.DataFrame(mean_values)
+print(mean_values.size)
+
 
 
 #print(num)
