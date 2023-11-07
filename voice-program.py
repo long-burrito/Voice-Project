@@ -8,7 +8,8 @@ import threading
 import sys
 import shutil
 import os
-import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
 
 #10/29/23 - had to adjust myprosody.py to output actual numbers instead of printing out strings
 
@@ -100,9 +101,25 @@ num = pd.DataFrame(list, columns=column)
 #print(list)
 mean_values = df.loc[1]
 mean_values = pd.DataFrame(mean_values)
-print(mean_values.size)
+
+# Create a figure and axis for the table
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.axis('off')  # Turn off the axis
+
+# Create a table from the DataFrame
+table = plt.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center', colColours=['#f0f0f0']*df.shape[1])
+
+# Adjust the table font size
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.auto_set_column_width([i for i in range(df.shape[1])])
 
 
+# Adjust the table cell height
+table.scale(1, 1.5)
+
+# Show the table
+plt.show()
 
 #print(num)
 #ratio = syllable_count/pauses
