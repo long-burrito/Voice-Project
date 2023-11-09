@@ -102,26 +102,12 @@ num = pd.DataFrame(list, columns=column)
 mean_values = df.loc[1]
 mean_values = pd.DataFrame(mean_values)
 
-# Create a figure and axis for the table
-fig, ax = plt.subplots(figsize=(10, 5))
-ax.axis('off')  # Turn off the axis
-
-# Create a table from the DataFrame
-table = plt.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center', colColours=['#f0f0f0']*df.shape[1])
-
-# Adjust the table font size
-table.auto_set_font_size(False)
-table.set_fontsize(10)
-table.auto_set_column_width([i for i in range(df.shape[1])])
-
-
-# Adjust the table cell height
-table.scale(1, 1.5)
-
-# Show the table
-plt.show()
-
+num = num.T
+#DataFrame.drop(labels=None, *, axis=0, index=None, columns=None, level=None, inplace=False, errors='raise')
+num = num.drop(labels=["No._long_pause", "speaking_time", "No._words_in_minutes", "No._detected_vowel", "no._of_words", "no._of_pauses", "ave_No._of_words_in_minutes"], axis=0)
+print("")
+mean_values = mean_values.drop(labels=["No._long_pause", "speaking_time", "No._words_in_minutes", "No._detected_vowel", "no._of_words", "no._of_pauses", "ave_No._of_words_in_minutes"], axis=0)
+mean_values = mean_values.iloc[1:, :]
 #print(num)
 #ratio = syllable_count/pauses
 #print(f"The ratio between syllable count and pauses is {ratio}")
-
