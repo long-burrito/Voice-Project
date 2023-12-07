@@ -103,11 +103,10 @@ mean_values = df.loc[1]
 mean_values = pd.DataFrame(mean_values)
 
 num = num.T
-#DataFrame.drop(labels=None, *, axis=0, index=None, columns=None, level=None, inplace=False, errors='raise')
+
 num = num.drop(labels=["No._long_pause", "speaking_time", "No._words_in_minutes", "No._detected_vowel", "no._of_words", "no._of_pauses", "ave_No._of_words_in_minutes"], axis=0)
 print("")
 mean_values = mean_values.drop(labels=["No._long_pause", "speaking_time", "No._words_in_minutes", "No._detected_vowel", "no._of_words", "no._of_pauses", "ave_No._of_words_in_minutes"], axis=0)
 mean_values = mean_values.iloc[1:, :]
-#print(num)
-#ratio = syllable_count/pauses
-#print(f"The ratio between syllable count and pauses is {ratio}")
+
+print(mean_values)
