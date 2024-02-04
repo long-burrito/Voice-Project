@@ -15,3 +15,5 @@ October 30th: Added a feature to the program that a new test file can be recorde
 November 7th: Experimented with outputting data from the Pandas DataFrames into a table using the MatPlotLib Python library.
 
 November 9th: Transformed the Pandas dataframe of prosodic values from being separated by columns to being separated by rows to make it easy to compare the average prosodic values to the ones collected by the voice-program.py with the provided audio file. I dropped values that correlate with the length of time spoken to avoid any bias, as making it longer could potentially mess with any comparisons made.
+
+February 2nd: Started conducting recordings of selected readers, 8 in total
