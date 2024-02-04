@@ -22,7 +22,7 @@ channels = 1  # Number of audio channels (1 for mono, 2 for stereo)
 sample_rate = 44100  # Sample rate (samples per second)
 chunk = 1024  # Buffer size
 output_folder = "myprosody/dataset/audioFiles"
-filename = "test.wav"  # Name of the output audio file
+filename = "lycci.wav"  # Name of the output audio file
 
 frames = []  # To store recorded audio frames
 
