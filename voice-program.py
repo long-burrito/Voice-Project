@@ -85,14 +85,14 @@ if input().lower() == 'y':
 
 
 p="passage 1"
-c=r"C:\Users\rener\Documents\GitHub\Voice-Project\myprosody"
+c=r"C:\Users\Rene Ramirez\Documents\GitHub\Voice-Project\myprosody"
 
 
 
 percentages, numbers, column = mysp.myprosody(p,c)
 print("")
 list = [percentages]
-df = pd.read_csv(r"C:\Users\rener\Documents\GitHub\Voice-Project\myprosody\dataset\stats.csv")
+df = pd.read_csv(r"C:\Users\Rene Ramirez\Documents\GitHub\Voice-Project\myprosody\dataset\stats.csv")
 
 percent = pd.DataFrame(list, columns=column)
 list = [numbers]
