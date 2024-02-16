@@ -340,17 +340,17 @@ def myprosody(m,p):
             if he==0:
                 he=25
                 dfout = "%s:\t %f (%s)" %  (nsns[i],he,"% percentile ")
-                print(dfout)
+                #print(dfout)
                 percentages.append(he)
                 numbers.append(score)
             elif he>=25 and he<=75:
                 dfout = "%s:\t %f (%s)" %  (nsns[i],he,"% percentile ")
-                print(dfout)
+                #print(dfout)
                 percentages.append(he)
                 numbers.append(score)
             else:
                 dfout = "%s:\t %f (%s)" %  (nsns[i],he,"% percentile ")
-                print(dfout)
+                #print(dfout)
                 percentages.append(he)
                 numbers.append(score)
         return percentages, numbers, columns
