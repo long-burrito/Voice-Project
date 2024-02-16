@@ -177,12 +177,12 @@ print(cosine_sim)
 vmin = 0.95  # Set the minimum value to be close to 1
 vmax = 1.0   # Set the maximum value to 1
 
-# Plot the heatmap with a red colormap
-# sns.heatmap(euclidean_dist, annot=True, cmap="Reds", fmt=".2f",
-#             xticklabels=['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4'],
-#             yticklabels=['Educated 1', 'Educated 2', 'Educated 3', 'Educated 4'])
-# plt.title("Euclidean Distance Heatmap")
-# plt.show()
+#Plot the heatmap with a red colormap
+sns.heatmap(cosine_sim, annot=True, vmin=vmin, vmax=vmax, cmap="Reds", fmt=".2f",
+            xticklabels=['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4'],
+            yticklabels=['Educated 1', 'Educated 2', 'Educated 3', 'Educated 4'])
+plt.title("Cosine Similarity Matrix")
+plt.show()
 
 X = df.drop(['Educated_True', 'Educated_False'], axis=1)
 y = df['Educated_True']
